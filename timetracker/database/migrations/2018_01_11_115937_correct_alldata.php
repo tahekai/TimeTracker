@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableParticipants extends Migration
+class CorrectAlldata extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,9 @@ class CreateTableParticipants extends Migration
      */
     public function up()
     {
-        Schema::create('participants', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('chipcode');
-            $table->integer('startingnumber');
-            $table->string('fullname');
+        Schema::table('alldata', function (Blueprint $table) {
+            $table->time('corridore_time')->nullable()->change();
+            $table->time('finish_time')->nullable()->change();
         });
     }
 
@@ -27,6 +25,8 @@ class CreateTableParticipants extends Migration
      */
     public function down()
     {
-        Schema::drop('participants');
+        Schema::table('alldata', function (Blueprint $table) {
+            //
+        });
     }
 }

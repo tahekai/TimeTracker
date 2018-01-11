@@ -12,12 +12,13 @@ class CreateTableCorridoreTime extends Migration
      */
     public function up()
     {
-        Schema::create('corridore_time', function (Blueprint $table) {
+        Schema::create('corridoreTime', function (Blueprint $table) {
+            
             $table->increments('id');
             $table->integer('chipcode');
-            $table->integer('corridor_id');
-            $table->string('time');
-            //$table->timestamps();
+            $table->integer('corridore_id')->default(1);
+            $table->timestamp('time')->useCurrent();
+            
         });
     }
 
@@ -28,6 +29,6 @@ class CreateTableCorridoreTime extends Migration
      */
     public function down()
     {
-        Schema::drop('corridore_time');
+        Schema::drop('corridoreTime');
     }
 }

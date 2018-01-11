@@ -13,4 +13,18 @@
 
 $app->get('/', function () use ($app) {
     return $app->version();
+    
+});
+
+$app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], function($app)
+{
+
+    $app->post('corridoretime','CorridoreController@createCorridoreTime');
+    $app->post('finishtime','FinishController@createFinishTime');
+    $app->post('alldata','AllDataController@createData');
+	$app->get('participants','ParticipantsController@index');
+	$app->get('participantstime','ParticipantsController@getTime');
+	$app->get('corridoretime','CorridoreController@index');
+	$app->get('finishtime','FinishController@index');
+	$app->get('alldata','AllDataController@index');
 });

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableFinishlineTime extends Migration
+class CreateTableFinishTime extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,13 @@ class CreateTableFinishlineTime extends Migration
      */
     public function up()
     {
-        Schema::create('finishline_time', function (Blueprint $table) {
+        Schema::create('finishTime', function (Blueprint $table) {
+    
+            
             $table->increments('id');
             $table->integer('chipcode');
-            $table->integer('finishline_id');
-            $table->string('time');
-            //$table->timestamps();
+            $table->integer('corridore_id')->default(2)->change();
+            $table->timestamp('time')->useCurrent();
         });
     }
 
@@ -28,6 +29,6 @@ class CreateTableFinishlineTime extends Migration
      */
     public function down()
     {
-        Schema::drop('finishline_time');
+        Schema::drop('finishTime');
     }
 }
