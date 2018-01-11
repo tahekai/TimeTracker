@@ -15,15 +15,13 @@
                   <tr>
                       <th>Nimi</th>
                       <th>Stardinumber</th>
-                      <th>Finišikoridor</th>
                       <th>Finiš</th>
                   </tr>
-                  <tr ng-repeat="x in participants">
+                  <tr ng-repeat="x in participants | orderBy:'-finish_time'">
                       <td>{{ x.fullname }}</td>
                       <td>{{ x.startingnumber }}</td>
                       <td style="display:none;">{{ x.chipcode }}</td>
-                      <td>{{ x.startingnumber }}</td>
-                      <td>{{ x.startingnumber }}</td>
+                      <td>{{ x.finish_time }}</td>
                   </tr>
 
             </table>
@@ -31,17 +29,56 @@
     </div>
 
 <script>
+    
+    
 
 var myApp = angular.module('myApp', []);
       
-myApp.controller('ParticipantsController', ['$http', '$scope', function($http,$scope) {
-    $http.get('http://localhost:8000/api/v1/participants').success(function(data) {
+myApp.controller('ParticipantsController', ['$http', '$scope', '$interval','$window',function($http,$scope,$interval,$window) {
+    $http.get('http://localhost:8000/api/v1/alldata').success(function(data) {
         var participants = [];
         // make the object to an array
         for(var participant in data) {
           participants.push(data[participant]);
         }
-         $scope.participants = participants;
+        
+        $scope.participants = participants;
+        
+        var hasFocus;
+
+          
+            $window.onblur = function() {  
+              console.log('>onblur');
+              hasFocus = false;  
+            };  
+
+            $window.onfocus = function() {  
+              console.log('>onfocus');
+              hasFocus = true;  
+            };
+
+           // console.log(hasFocus ? 'focused' : 'not focused');
+         
+        if (hasFocus = true) {
+            
+           var interval  =  $interval(function () {
+            $http.get('http://localhost:8000/api/v1/alldata').success(function(data) {
+            var participants = [];
+            // make the object to an array
+            for(var participant in data) {
+              participants.push(data[participant]);
+            }
+            $scope.participants = participants; });
+            console.log('interval');
+        }, 5000);
+            
+        } else if (hasFocus = false) {
+           $interval.cancel(interval);
+        }
+        
+        //$window.onblur = function() {
+            
+       // };
     });
 }]); 
     
