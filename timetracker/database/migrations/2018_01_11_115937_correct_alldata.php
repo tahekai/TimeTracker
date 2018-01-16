@@ -12,7 +12,7 @@ class CorrectAlldata extends Migration
      */
     public function up()
     {
-        Schema::table('alldata', function (Blueprint $table) {
+        Schema::table('alldatas', function (Blueprint $table) {
             $table->time('corridore_time')->nullable()->change();
             $table->time('finish_time')->nullable()->change();
         });

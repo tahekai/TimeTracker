@@ -12,7 +12,7 @@ class CreateTableAlldata extends Migration
      */
     public function up()
     {
-        Schema::create('alldata', function (Blueprint $table) {
+        Schema::create('alldatas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('chipcode');
             $table->integer('startingnumber');

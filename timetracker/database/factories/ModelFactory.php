@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -11,9 +13,13 @@
 |
 */
 
-$factory->define(App\User::class, function ($faker) {
+$factory->define(App\Alldata::class, function ($faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        'chipcode' => $faker->ean8,
+        'startingnumber' => $faker->numberBetween($min = 1, $max = 200),
+        'fullname' => $faker->name,
+        'corridore_time' => Carbon::now('Europe/Tallinn'),
+        //'finish_time' => Carbon::now('Europe/Tallinn')->addSeconds($faker->numberBetween($min = 1, $max = 15)),
+        
     ];
 });

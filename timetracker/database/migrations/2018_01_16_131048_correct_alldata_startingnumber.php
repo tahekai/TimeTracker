@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ModifyColumnNameFinishTimesTable extends Migration
+class CorrectAlldataStartingnumber extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,8 @@ class ModifyColumnNameFinishTimesTable extends Migration
      */
     public function up()
     {
-        Schema::table('finish_times', function (Blueprint $table) {
-             $table->integer('corridore_id')->default(2)->change();
+        Schema::table('alldatas', function (Blueprint $table) {
+            $table->integer('startingnumber')->unique()->change();
         });
     }
 
@@ -24,7 +24,7 @@ class ModifyColumnNameFinishTimesTable extends Migration
      */
     public function down()
     {
-        Schema::table('finish_times', function (Blueprint $table) {
+        Schema::table('alldata', function (Blueprint $table) {
             //
         });
     }

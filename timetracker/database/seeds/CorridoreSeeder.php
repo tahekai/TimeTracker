@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use Carbon\Carbon;
 
-class DatabaseSeeder extends Seeder
+class CorridoreSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,13 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker::create();
         
-        $this->call('CorridoreSeeder');
-        $this->call('FinishSeeder');
-        
+        factory(App\Alldata::class, 10)->create();
+
     }
 }
-
-
-
- 
