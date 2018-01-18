@@ -15,7 +15,7 @@ class CorridoreSeeder extends Seeder
     {
         $faker = Faker::create();
         
-        factory(App\Alldata::class, 10)->create();
+        factory(App\Alldata::class, 5)->create();
 
     }
 }

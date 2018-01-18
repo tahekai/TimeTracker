@@ -16,7 +16,7 @@ use Carbon\Carbon;
 $factory->define(App\Alldata::class, function ($faker) {
     return [
         'chipcode' => $faker->ean8,
-        'startingnumber' => $faker->numberBetween($min = 1, $max = 200),
+        'startingnumber' => $faker->numberBetween($min = 1, $max = 1000),
         'fullname' => $faker->name,
         'corridore_time' => Carbon::now('Europe/Tallinn'),
         //'finish_time' => Carbon::now('Europe/Tallinn')->addSeconds($faker->numberBetween($min = 1, $max = 15)),

@@ -11,7 +11,5 @@ class ApplicationTest extends TestCase
      */
     
     
-    public function create_ten_participants() {
-        $alldata = factory(App\Alldata::class, 10)->create();
-    }
+    
 }

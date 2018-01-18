@@ -14,6 +14,7 @@ class CorrectAlldataStartingnumber extends Migration
     {
         Schema::table('alldatas', function (Blueprint $table) {
             $table->integer('startingnumber')->unique()->change();
+            $table->integer('chipcode')->unique()->change();
         });
     }
 
@@ -24,7 +25,7 @@ class CorrectAlldataStartingnumber extends Migration
      */
     public function down()
     {
-        Schema::table('alldata', function (Blueprint $table) {
+        Schema::table('alldatas', function (Blueprint $table) {
             //
         });
     }

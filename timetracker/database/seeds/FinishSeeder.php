@@ -17,6 +17,6 @@ class FinishSeeder extends Seeder
         
         DB::table('alldatas')
                 ->where('finish_time', NULL)
-                ->update(['finish_time' => Carbon::now('Europe/Tallinn')->addSeconds($faker->numberBetween($min = 1, $max = 15))]);
+                ->update(['finish_time' => (Carbon::now('Europe/Tallinn')->addSeconds($faker->numberBetween($min = 5, $max = 15)))]);
     }
 }

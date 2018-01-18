@@ -25,7 +25,7 @@ class CorrectAlldata extends Migration
      */
     public function down()
     {
-        Schema::table('alldata', function (Blueprint $table) {
+        Schema::table('alldatas', function (Blueprint $table) {
             //
         });
     }

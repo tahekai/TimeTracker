@@ -31,6 +31,6 @@ class CreateTableAlldata extends Migration
      */
     public function down()
     {
-        Schema::drop('alldata');
+        Schema::drop('alldatas');
     }
 }
